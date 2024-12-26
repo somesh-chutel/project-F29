@@ -1,0 +1,28 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(158, 202, 202);
+}
+.main-cont{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.list-cards{
+  padding: 10px;
+  width: 100%;
+  background-color: bisque;
+  margin-bottom: 10px;
+  list-style: none;
+}
+
+
+
