@@ -1,5 +1,7 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import './index.css';
 
 const Login =()=> {
@@ -9,6 +11,12 @@ const Login =()=> {
         password : "",
         errorMsg : ""
     });
+
+    const token = Cookies.get("jwtToken");
+
+    console.log( token );
+
+    const navigate = useNavigate();
 
     const onSubmitUserData = async (e)=>{
 
@@ -36,7 +44,9 @@ const Login =()=> {
 
                 setValues({...allValues,errorMsg : ""});
 
-                console.log( data );
+                Cookies.set("jwtToken",data.jwt_token);
+
+                navigate("/");
             }
             else{
 
@@ -54,7 +64,12 @@ const Login =()=> {
 
     }
 
+    useEffect(()=>{
 
+        token !== undefined && navigate("/");
+
+
+    },[]);
 
     return(
 
