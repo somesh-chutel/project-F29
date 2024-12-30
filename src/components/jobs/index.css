@@ -1,0 +1,16 @@
+.jobs-main-cont{
+    width: 100%;
+    background-color: black;
+}
+.filter-alljobs-cont{
+    width: 100%;
+    display: flex;
+}
+.filter-cont{
+    width: 40%;
+}
+.alljobs-cont{
+    width: 60%;
+    padding: 20px;
+    color: white;
+}

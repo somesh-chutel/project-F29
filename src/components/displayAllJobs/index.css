@@ -1,0 +1,8 @@
+.jobs-card{
+    width: 100%;
+    padding: 15px;
+    background-color: rgb(49, 45, 45);
+    margin-bottom: 10px;
+    list-style: none;
+    border-radius: 10px;
+}
