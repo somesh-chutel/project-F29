@@ -8,7 +8,10 @@ import './index.css';
 const Jobs =()=> {
 
     const [allValues,setValues] = useState({
-        jobsList : []
+        jobsList : [],
+        empType : [],
+        minPakage : "",
+        userInput : ""
     });
 
     const token = Cookies.get("jwtToken");
@@ -17,7 +20,9 @@ const Jobs =()=> {
 
             const fetchAllJobs = async()=>{
 
-                const api = "https://apis.ccbp.in/jobs";
+                const {userInput,empType,minPakage} = allValues;
+
+                const api = `https://apis.ccbp.in/jobs?employment_type=${empType}&minimum_package=${minPakage}&search=${userInput}`;
 
                 const options = {
                     method : "Get",
@@ -32,6 +37,8 @@ const Jobs =()=> {
                     const response = await fetch(api,options);
 
                     const data = await response.json();
+
+                    console.log( data.jobs );
 
                     if( response.ok === true ){
 
@@ -49,7 +56,24 @@ const Jobs =()=> {
 
             fetchAllJobs();
 
-    },[] );
+    },[allValues.userInput,allValues.empType] );
+
+
+    const onSearchUserIn = (e)=>{
+
+        if( e.key === "Enter" ){
+
+            setValues({...allValues,userInput : e.target.value}); 
+
+        }
+
+    }
+
+    const empTypeChange = (value)=>{
+
+        setValues({...allValues,empType : value});
+
+    }
 
     return (
         <div className='jobs-main-cont'>
@@ -59,8 +83,11 @@ const Jobs =()=> {
             <div className='filter-alljobs-cont'>
 
                     <div className='filter-cont'>
-                        <FilterSection/>
+                        <FilterSection empFunc = {empTypeChange}/>
                     </div>
+                    <div style={{width : "60%"}}>
+
+                        <input onKeyUp={onSearchUserIn} type="search" className='form-control w-75 text-dark mt-3 ml-3'/>
 
                     <ul className='alljobs-cont'>
 
@@ -69,6 +96,7 @@ const Jobs =()=> {
                         }
                        
                     </ul>
+                    </div>
 
             </div>
         

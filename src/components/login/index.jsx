@@ -77,13 +77,13 @@ const Login =()=> {
 
                 <form onSubmit={onSubmitUserData} style={{width:"35%"}} className='border border-primary p-3 rounded'>
                 <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Username</label>
-                    <input onChange={(e)=>{setValues({...allValues,username : e.target.value})}} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    <label className='text-danger' htmlFor="exampleInputEmail1">Username</label>
+                    <input  onChange={(e)=>{setValues({...allValues,username : e.target.value})}} type="text" className="form-control text-danger" id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     <small id="emailHelp" className="form-text text-muted">We'll never share your username with anyone else.</small>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Password</label>
-                    <input onChange={(e)=>{setValues({...allValues,password : e.target.value})}} type="password" className="form-control" id="exampleInputPassword1"/>
+                    <label className='text-danger' htmlFor="exampleInputPassword1">Password</label>
+                    <input onChange={(e)=>{setValues({...allValues,password : e.target.value})}} type="password" className="form-control text-danger" id="exampleInputPassword1"/>
                 </div>
                 <button type="submit" className="btn btn-primary btn-block">Login</button>
                 <br /> 
