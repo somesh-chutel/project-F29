@@ -22,6 +22,8 @@ const Jobs =()=> {
 
                 const {userInput,empType,minPakage} = allValues;
 
+                console.log( empType );
+
                 const api = `https://apis.ccbp.in/jobs?employment_type=${empType}&minimum_package=${minPakage}&search=${userInput}`;
 
                 const options = {
@@ -38,7 +40,6 @@ const Jobs =()=> {
 
                     const data = await response.json();
 
-                    console.log( data.jobs );
 
                     if( response.ok === true ){
 
@@ -69,9 +70,18 @@ const Jobs =()=> {
 
     }
 
-    const empTypeChange = (value)=>{
+    const empTypeChange = (value,isChecked)=>{
 
-        setValues({...allValues,empType : value});
+        if( isChecked ){
+
+            setValues({...allValues,empType : [...allValues.empType,value]});//[FULLTIME,PARTIME]
+
+        }
+        else{
+
+            setValues({...allValues,empType : allValues.empType.filter(each=> each !== value)});
+
+        }
 
     }
 

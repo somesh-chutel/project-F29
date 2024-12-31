@@ -1,6 +1,7 @@
 import './index.css';
 import { FaStar,FaBriefcase  } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 /*
 
@@ -26,6 +27,7 @@ const DisplayAllJobs = (prop)=>{
 
     return (
 
+        <Link to={`/jobs/${jobsItem.id}`}>
         <li className='jobs-card'>
 
                 <div className='d-flex'>
@@ -56,7 +58,7 @@ const DisplayAllJobs = (prop)=>{
                 <p>{jobsItem.job_description}</p>
 
         </li>
-
+        </Link>
     )
 }
 
